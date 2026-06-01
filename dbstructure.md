@@ -16,6 +16,7 @@ ________________________________________________________________________________
 | ID                    | Int                 | Auto increment, not null, unique   | Primay Key            |
 | Nome                  | Varchar(50)         | Not null                           |                       |
 | Sigla                 | Varchar (10)        | Not null, unique                   | Index                 |
+| Dipartimento_ID       | Int                 | Not null                           | Foreign Key           |
 
 
 
@@ -51,6 +52,7 @@ ________________________________________________________________________________
 | Data di nascita       | Date                | Not null                           |                       |
 | Luogo di nascita      | Varchar (200)       | Not null                           |                       |
 | Matricola             | Varchar (10)        | Not null, Unique                   | Index                 |
+| Corsi_ID              | Int                 | Not null                           | Foreign Key           |
 
 
 
@@ -89,7 +91,8 @@ ________________________________________________________________________________
 | Data                  | Date                | Not null                           |                       |
 | Ora                   | Time                | Not null                           |                       |
 | Luogo                 | Varchar (200)       | Not null                           |                       |
-
+| Corso_ID              | Int                 | Not null                           | Foreign Key           |
+s
 
 
 
