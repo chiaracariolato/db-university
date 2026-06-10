@@ -34,14 +34,15 @@ JOIN teachers as t ON t.id = ct.teacher_id
 ORDER BY d.name;
 
 #Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica
-SELECT * 
+SELECT t.name, t.surname
 FROM teachers AS t
 JOIN course_teacher as ct ON t.id = ct.teacher_id
 JOIN courses AS c ON c.id = ct.course_id
 JOIN degrees AS d ON c.degree_id = d.id
 JOIN departments AS de ON de.id = d.department_id
-WHERE de.id=54;
-#NON DA RISULTATI!!! Che problema c'è?
+WHERE de.id=5
+group by t.id
+order by t.id;
 
 #BONUS: Selezionare per ogni studente il numero di tentativi sostenuti per ogni esame, 
 #stampando anche il voto massimo. Successivamente, filtrare i tentativi con voto minimo 18.
@@ -52,6 +53,5 @@ FROM students AS s
 JOIN exam_student AS es ON es.student_id = s.id
 JOIN exams AS e ON e.id = es.exam_id
 JOIN courses AS c ON c.id = e.course_id
-WHERE es.vote >= 18
-GROUP BY s.id, s.name, s.surname, c.id;
-#Non sono sicura che sia giusto perchè se aggiungo il filtro sul voto i tentativi diventano tutti 1
+GROUP BY s.id, c.id
+HAVING max(es.vote) >= 18;
